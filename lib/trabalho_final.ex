@@ -8,7 +8,8 @@ defmodule TrabalhoFinal do
     IO.puts("[0] Intervalo de Confiança por Proporção")
     IO.puts("[1] Intervalo de Confiança por Média")
     IO.puts("[2] Tamanho da Amostra por Proporção")
-    IO.puts("[3] Tamanho da Amostra por Média")
+    IO.puts("[3] Tamanho da Amostra por Média\n")
+    IO.puts("[9] Sair do Programa")
     IO.puts("======================================")
     IO.puts("Informe qual das funções acima você quer utilizar:")
     {option, _} = Integer.parse(IO.read(:stdio, :line))
@@ -21,6 +22,7 @@ defmodule TrabalhoFinal do
   defp handle_statistic_function(1), do: intervalo_confianca_media()
   defp handle_statistic_function(2), do: tamanho_amostra_proporcao()
   defp handle_statistic_function(3), do: tamanho_amostra_media()
+  defp handle_statistic_function(9), do: :ok
   defp handle_statistic_function(_) do
     IO.puts("\n\n")
     IO.puts("[ERRO] Opção Inválida!")
@@ -45,7 +47,7 @@ defmodule TrabalhoFinal do
 
   # Média
   defp intervalo_confianca_media() do
-    IO.puts("Informe o Número de Sucesso: ")
+    IO.puts("Informe o Tamanho da Amostra: ")
     {amostra, _} = Integer.parse(IO.read(:stdio, :line))
     IO.puts("Informe a Média: ")
     {media, _} = Float.parse(IO.read(:stdio, :line))
