@@ -32,9 +32,25 @@ defmodule TrabalhoFinal do
   # Proporção
   defp intervalo_confianca_proporcao() do
     IO.puts("Informe o Número de Sucesso: ")
-    {amostra, _} = Integer.parse(IO.read(:stdio, :line))
+    line = IO.read(:stdio, :line)
+    amostra =
+      case String.contains?(line, "%") do
+        true ->
+          {amostra, _} = convert_percentage(line)
+          amostra / 100
+        false ->
+          {amostra, _} = Integer.parse(line)
+          amostra
+      end
     IO.puts("Informe o Tamanho da Amostra: ")
     {populacao, _} = Integer.parse(IO.read(:stdio, :line))
+
+    amostra =
+      if amostra < 1 do
+        populacao * amostra
+      else
+        amostra
+      end
     IO.puts("Informe o Nível de Confiança em %: ")
     {nivel_confianca, _} = Integer.parse(IO.read(:stdio, :line))
 
@@ -94,5 +110,11 @@ defmodule TrabalhoFinal do
 
     IO.puts(" ")
     main()
+  end
+
+  defp convert_percentage(line) do
+    line
+    |> String.replace("%", "")
+    |> Integer.parse()
   end
 end
