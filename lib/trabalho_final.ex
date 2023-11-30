@@ -66,7 +66,7 @@ defmodule TrabalhoFinal do
 
   # Média
   defp tamanho_amostra_media() do
-    IO.puts("Digite o valor da media amostral: ")
+    IO.puts("Digite o valor do Erro: ")
     {media_amostral, _} = Integer.parse(IO.read(:stdio, :line))
     IO.puts("Digite o valor do Desvio Padrão Populacional: ")
     {sigma, _} = Integer.parse(IO.read(:stdio, :line))
@@ -74,7 +74,7 @@ defmodule TrabalhoFinal do
     {nivel_confianca, _} = Integer.parse(IO.read(:stdio, :line))
 
     n = TamanhoAmostra.media(media_amostral, sigma, nivel_confianca)
-    IO.puts("R=#{n}")
+    IO.puts("Tamanho da Amostra = #{n}")
 
     IO.puts(" ")
     main()
@@ -90,7 +90,7 @@ defmodule TrabalhoFinal do
     {erro, _} = Integer.parse(IO.read(:stdio, :line))
 
     n = TamanhoAmostra.proporcao(porcentagem, erro, nivel_confianca)
-    IO.puts("R=#{n}")
+    IO.puts("Tamanho da Amostra = #{n}")
 
     IO.puts(" ")
     main()

@@ -8,7 +8,7 @@ defmodule IntervaloConfianca do
     IO.inspect("z_alfa = #{z_alfa}")
 
     erro = to_round(z_alfa * (desvio_padrao / :math.sqrt(tamanho_da_amostra)))
-    IO.inspect("margem_de_erro = #{erro}")
+    IO.inspect("Margem de Erro = #{erro}")
 
     valor_menor = to_round(media - erro)
     valor_maior = to_round(media + erro)
